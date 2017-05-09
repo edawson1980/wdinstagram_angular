@@ -15,9 +15,12 @@ angular
   ])
 
   .config([
-    "$stateProvider"
+    "$stateProvider",
+    RouterFunction
   ])
 
+
+  function RouterFunction ($stateProvider){
   $stateProvider
   .state("entriesIndex", {
     url: "/entries",
@@ -32,3 +35,4 @@ angular
     controller: "EntriesShowController",
     controllerAs: "vm"
   })
+}
