@@ -11,12 +11,20 @@ var entries = [
 
 angular
   .module("wdinstagram", [
-
+    "$ui.router"
   ])
 
   .config([
     "$stateProvider",
     RouterFunction
+  ])
+
+  .controller("EntriesIndexController", [
+    EntriesIndexControllerFunction
+  ])
+
+  .controller("EntriesShowController", [
+    EntriesShowControllerFunction
   ])
 
 
@@ -35,4 +43,8 @@ angular
     controller: "EntriesShowController",
     controllerAs: "vm"
   })
+}
+
+function EntriesIndexControllerFunction (){
+  this.entries = entries.all;
 }
