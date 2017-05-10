@@ -7,7 +7,8 @@ var entries = [
 
 angular
   .module("wdinstagram", [
-    "ui.router"
+    "ui.router",
+    "ngResource"
   ])
 
   .config([
@@ -16,6 +17,7 @@ angular
   ])
 
   .controller("EntryIndexController", [
+    "EntryFactory",
     EntryIndexControllerFunction
   ])
 
@@ -23,6 +25,12 @@ angular
     "$stateParams",
     EntryShowControllerFunction
   ])
+
+  .factory("EntryFactory", [
+    "$resource",
+    EntryFactoryFunction
+  ])
+
 
   function RouterFunction ($stateProvider){
     $stateProvider
@@ -42,9 +50,13 @@ angular
   }
 
   function EntryIndexControllerFunction (){
-    this.entries = entries;
+    this.entries = EntryFactory.query();
   }
 
   function EntryShowControllerFunction ($stateParams){
     this.entry = entries[$stateParams.id];
   }
+
+  function EntryFactoryFunction( $resource ){
+      return $resource( "http://localhost:3000/entries/:id" );
+    }
