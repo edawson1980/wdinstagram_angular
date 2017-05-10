@@ -20,7 +20,20 @@ angular
   ])
 
   function RouterFunction ($stateProvider){
-    console.log("working")
+    $stateProvider
+    .state("entryIndex", {
+      url: "/entries",
+      templateUrl: "/js/ng-views/index.html",
+      controller: "EntryIndexController",
+      controllerAs: "vm"
+    })
+
+    .state("entryShow", {
+      url: "/entries/:id",
+      templateUrl: "js/ng-views/show.html",
+      controller: "EntryShowController",
+      controllerAs: vm
+    })
   }
 
   function EntryIndexControllerFunction (){
