@@ -15,6 +15,14 @@ angular
     RouterFunction
   ])
 
+  .controller("EntryIndexController", [
+    EntryIndexControllerFunction
+  ])
+
   function RouterFunction ($stateProvider){
     console.log("working")
+  }
+
+  function EntryIndexControllerFunction (){
+    console.log("entry index working")
   }
