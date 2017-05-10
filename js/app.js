@@ -9,3 +9,12 @@ angular
   .module("wdinstagram", [
     "ui.router"
   ])
+
+  .config([
+    "$stateProvider",
+    RouterFunction
+  ])
+
+  function RouterFunction ($stateProvider){
+    console.log("working")
+  }
