@@ -19,6 +19,11 @@ angular
     EntryIndexControllerFunction
   ])
 
+  .controller("EntryShowController", [
+    "$stateParams",
+    EntryShowControllerFunction
+  ])
+
   function RouterFunction ($stateProvider){
     $stateProvider
     .state("entryIndex", {
@@ -32,10 +37,14 @@ angular
       url: "/entries/:id",
       templateUrl: "js/ng-views/show.html",
       controller: "EntryShowController",
-      controllerAs: vm
+      controllerAs: "vm"
     })
   }
 
   function EntryIndexControllerFunction (){
-    console.log("entry index working")
+    this.entries = entries;
+  }
+
+  function EntryShowControllerFunction ($stateParams){
+    this.entry = entries[$stateParams.id];
   }
